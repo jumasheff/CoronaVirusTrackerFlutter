@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Corona Virus Tracker',
+      title: 'Корона вирус тууралуу',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
@@ -20,20 +20,20 @@ class MyApp extends StatelessWidget {
         length: 4,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Corona Virus Tracker'),
+            title: Text('Корона вирус тууралуу'),
             bottom: TabBar(
               tabs: <Widget>[
                 Tab(
-                  text: "Stats",
+                  text: "Статистика",
                 ),
                 Tab(
-                  text: "Maps",
+                  text: "Карта",
                 ),
                 Tab(
-                  text: "Advices",
+                  text: "Кеңеш",
                 ),
                 Tab(
-                  text: "About",
+                  text: "Маалымат",
                 ),
               ],
             ),

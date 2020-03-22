@@ -74,11 +74,11 @@ class _StatsPage extends State<StatsPage>
 
             final data = [
               LinearCases(CaseType.sick.index, totalCount.sick,
-                  totalCount.sickRate.toInt(), "Sick"),
+                  totalCount.sickRate.toInt(), "Sick", "Ооругандар"),
               LinearCases(CaseType.deaths.index, totalCount.deaths,
-                  totalCount.fatalityRate.toInt(), "Deaths"),
+                  totalCount.fatalityRate.toInt(), "Deaths", "Өлүмдөр"),
               LinearCases(CaseType.recovered.index, totalCount.recovered,
-                  totalCount.recoveryRate.toInt(), "Recovered")
+                  totalCount.recoveryRate.toInt(), "Recovered", "Айыккандар")
             ];
 
             final series = [
@@ -87,7 +87,7 @@ class _StatsPage extends State<StatsPage>
                 domainFn: (LinearCases cases, _) => cases.type,
                 measureFn: (LinearCases cases, _) => cases.total,
                 labelAccessorFn: (LinearCases cases, _) =>
-                    '${cases.text}\n${Utils.numberFormatter.format(cases.count)}',
+                    '${cases.label}\n${Utils.numberFormatter.format(cases.count)}',
                 colorFn: (cases, index) {
                   switch (cases.text) {
                     case "Confirmed":
@@ -112,12 +112,12 @@ class _StatsPage extends State<StatsPage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                          "Last updated: ${Utils.dateFormatter.format(DateTime.now())}"),
+                          "Жаңыртылган: ${Utils.dateFormatter.format(DateTime.now())}"),
                       Padding(
                         padding: EdgeInsets.only(bottom: 8),
                       ),
                       Text(
-                        "Global Total Cases Stats",
+                        "Дүйнөлүк статистика",
                         style: Theme.of(context).textTheme.headline,
                       ),
                       Container(
@@ -146,7 +146,7 @@ class _StatsPage extends State<StatsPage>
                                         .headline
                                         .apply(color: Colors.blue),
                                   ),
-                                  Text("Confirmed")
+                                  Text("Жугузгандар")
                                 ],
                               ),
                               Column(
@@ -159,7 +159,7 @@ class _StatsPage extends State<StatsPage>
                                         .headline
                                         .apply(color: Colors.orange),
                                   ),
-                                  Text("Sick")
+                                  Text("Ооруп жаткандар")
                                 ],
                               )
                             ]),
@@ -179,7 +179,7 @@ class _StatsPage extends State<StatsPage>
                                           .headline
                                           .apply(color: Colors.green),
                                     ),
-                                    Text("Recovered")
+                                    Text("Айыккандар")
                                   ],
                                 ),
                                 Column(
@@ -192,7 +192,7 @@ class _StatsPage extends State<StatsPage>
                                           .headline
                                           .apply(color: Colors.green),
                                     ),
-                                    Text("Recovery Rate")
+                                    Text("Айыгуу көрсөткүчү")
                                   ],
                                 )
                               ])),
@@ -211,7 +211,7 @@ class _StatsPage extends State<StatsPage>
                                           .headline
                                           .apply(color: Colors.red),
                                     ),
-                                    Text("Deaths")
+                                    Text("Өлүмдөр")
                                   ],
                                 ),
                                 Column(
@@ -224,7 +224,7 @@ class _StatsPage extends State<StatsPage>
                                           .headline
                                           .apply(color: Colors.red),
                                     ),
-                                    Text("Fatality Rate")
+                                    Text("Өлүмдөр көрсөткүчү")
                                   ],
                                 )
                               ])),
@@ -431,8 +431,9 @@ class LinearCases {
   final int count;
   final int total;
   final String text;
+  final String label;
 
-  LinearCases(this.type, this.count, this.total, this.text);
+  LinearCases(this.type, this.count, this.total, this.text, this.label);
 }
 
 class OrdinalCases {
