@@ -8,6 +8,12 @@ import 'package:http/http.dart' as http;
 import '../models/corona_case_response.dart';
 import '../models/corona_case_total_count_response.dart';
 
+const COUNTRIES = const {
+  'Afghanistan': 'Ооганстан',
+  'China': 'Кытай',
+  'Italy': 'Италия'
+};
+
 class TimeoutException implements Exception {
   final String message = 'Server timeout';
   TimeoutException();
@@ -119,6 +125,7 @@ class CoronaService {
             0, (previousValue, element) => previousValue + element.recovered);
         coronaCountryCases.add(CoronaCaseCountry(
             country: key,
+            countryName: COUNTRIES[key] ?? key,
             totalConfirmedCount: confirmed,
             totalDeathsCount: deaths,
             totalRecoveredCount: recovered,

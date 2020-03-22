@@ -339,7 +339,7 @@ class _StatsPage extends State<StatsPage>
 
             final tailText = tailTexts.join(" - ");
 
-            var country = element.country;
+            var country = element.countryName;
             if (tailText.isNotEmpty) {
               country += "\n" + tailText;
             }

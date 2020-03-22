@@ -3,6 +3,7 @@ import 'package:CoronaTracker/models/corona_case_total_count.dart';
 
 class CoronaCaseCountry {
   final String country;
+  final String countryName;
   final int totalConfirmedCount;
   final int totalDeathsCount;
   final int totalRecoveredCount;
@@ -14,6 +15,7 @@ class CoronaCaseCountry {
 
   CoronaCaseCountry(
       {this.country,
+      this.countryName,
       this.totalConfirmedCount,
       this.totalDeathsCount,
       this.totalRecoveredCount,
